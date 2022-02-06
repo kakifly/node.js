@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    {/*
+    //"webpack": "webpack src/index.js bundle.js"
+    */}
+    "webpack": "webpack"
+  },
+  "dependencies": {
+    "webpack": "^5.35.1"
+  },
+  "devDependencies": {
+    "webpack-cli": "^4.6.0"
+  }
+}

@@ -1,0 +1,47 @@
+Arguments: 
+  /home/yoshinori/.ndenv/versions/v15.11.0/bin/node /home/yoshinori/.ndenv/versions/v15.11.0/bin/yarn build
+
+PATH: 
+  /home/yoshinori/program/c_c++/MakeFile_Base:/home/yoshinori/.ndenv/versions/v15.11.0/bin:/home/yoshinori/.ndenv/bin/:/home/yoshinori/program/MakeFile_Base:/root/.ndenv/versions/v15.11.0/bin:/home/yoshinori/program/MakeFile_Base:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin
+
+Yarn version: 
+  1.22.10
+
+Node version: 
+  15.11.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  SyntaxError: /home/yoshinori/program/node.js/webpack/sample01/package.json: Unexpected token } in JSON at position 323
+      at JSON.parse (<anonymous>)
+      at /home/yoshinori/.ndenv/versions/v15.11.0/lib/node_modules/yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/home/yoshinori/.ndenv/versions/v15.11.0/lib/node_modules/yarn/lib/cli.js:310:30)
+      at /home/yoshinori/.ndenv/versions/v15.11.0/lib/node_modules/yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "sample01",
+    "version": "1.0.0",
+    "description": "",
+    "private": true,
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "build":"webpack"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+      "webpack": "^5.35.1",
+      "webpack-cli": "^4.6.0"
+    },
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

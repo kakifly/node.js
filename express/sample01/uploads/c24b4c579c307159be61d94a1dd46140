@@ -1,0 +1,159 @@
+body {
+    font-family: 'Open Sans','Hiragino Sans','ƒqƒ‰ƒMƒmŠpƒSƒVƒbƒN','Hiragino Kaku Gothic ProN','ƒqƒ‰ƒMƒmŠpƒS ProN W3','Helvetica Neue',Helvetica,Arial,sans-serif;
+    color: #666666;
+}
+
+
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Open Sans','Hiragino Sans','ƒqƒ‰ƒMƒmŠpƒSƒVƒbƒN','Hiragino Kaku Gothic ProN','ƒqƒ‰ƒMƒmŠpƒS ProN W3','Helvetica Neue',Helvetica,Arial,sans-serif;
+    color: #666666;
+}
+
+a {
+    color: #555555;
+}
+
+a:hover {
+    color: #333333;
+}
+
+.btn-default {
+    color: #666666;
+}
+
+.logo b {
+  height: 66px;
+    line-height: 66px;
+    background-color: #333333;
+}
+
+.top-left-part .logo-mark {
+    margin-top: 8px;
+    fill: #333333;
+}
+
+.content-wrapper .top-left-part .logo .logo-mark svg {
+    fill: #ffffff;
+}
+
+.navbar-header {
+    background-color: #333333;
+}
+
+.navbar-header .open-close {
+    display: none;
+}
+
+.navbar-top-links>li > a{
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.search-box {
+    margin-top: 8px;
+}
+
+#page-wrapper {
+    background-color: #ffffff;
+}
+
+.main-container header.affix{
+    background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 5px #999999;
+}
+
+  .logo .logo-mark svg {
+    fill: #666666;
+  }
+
+.bg-title {
+    padding: 20px 60px 20px 60px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.main-container header h1#revision-path {
+    font-size: 20px;
+}
+
+.main-container header h1#revision-path .separator {
+    color: #cccccc;
+}
+
+.main-container header h1#revision-path .separator a {
+    color: #cccccc;
+}
+
+.nav.nav-tabs > li > a {
+    color: #555555;
+}
+
+.nav.nav-tabs > li > a:hover {
+    color: #333333;
+}
+
+#main {
+    background-color: #ffffff;
+    padding: 0 60px;
+}
+
+#main .wiki {
+    color: #333333;
+}
+
+#main .wiki a {
+    color: #0366d6;
+}
+
+#main .tab-content {
+    border-width: 0 1px 1px 1px;
+    border-style: solid;
+    border-color: #e0e0e0;
+    padding: 30px;
+
+}
+
+#main .nav.nav-tabs > li.active > a {
+    background-color: #ffffff;
+}
+
+.page-list .page-list-ul>li>a.page-list-link {
+    color: #999999;
+}
+
+.page-comments-row {
+    display: none;
+}
+
+.page-list .page-list-ul>li>a strong {
+    font-weight: normal;
+}
+
+.on-edit #main {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+body.on-edit .header-wrap {
+    margin-top: -15px;
+}
+
+body.on-edit .bg-title {
+    border-bottom: none;
+}
+
+body.on-edit .row.bg-title h1#revision-path {
+    font-size: 16px;
+}
+
+body.on-edit #main .tab-content {
+  padding: 0;
+  }
+
+.row.page-attachments-row.hidden-print {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background-color: #ffffff;
+  border-color: #ffffff;
+}

@@ -1,0 +1,45 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    //"module": "es2015",
+    "module": "CommonJS",
+    "types": ["node"],
+    "lib": [ "es2019", "dom"],
+    //"allowJs": true, // jsコンパイル用
+    //"checkJs": true, // js簡易型チェック
+    "sourceMap": true,
+    "inlineSources": true,
+    //"noImplicitAny": true,
+    "jsx": "preserve",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+
+    //型定義ファイルのチェックをスキップする
+    //  あるライブラリの型定義がnode_modulesにコピーされて複数存在する場合
+    "skipLibCheck": true,
+
+    //型チェック
+    //"strictNullChecks": true,
+    //"noImplicitAny": true,
+    //"noImplicitThis": true,
+    //"noImplicitReturns": true, //暗黙的なreturnを禁止する
+    //不要なコードチェック
+    //"noUnusedLocals": true, //使用していないローカル変数を禁止する
+    //"noUnusedParameters": true,
+    //出力先
+    "outDir": "./dist",
+    "rootDir": "./src",
+    //"baseUrl": ".",
+    "paths": {
+      //typescript内で他のファイルの定義を参照した場合は設定しておいたほうが良い。
+      //tscでは@を変換してくれないため、webpack側にも同様の定義が必要
+      "@/*": ["./src/*"],
+      "@": ["./src"]
+    }
+  },
+  "include": ["./src/**/*"],
+  //"exclude": ["node_modules", "./src/client/**/*"]
+  "exclude": ["**/node_modules"]
+}
