@@ -1,0 +1,26 @@
+@startuml
+title パーティション
+
+|ユーザーA|
+
+start
+|ユーザーA|
+:アクティビティA;
+
+if (x >0 ) then (true)
+  |ユーザーB|
+  :アクティビティB;
+else (false)
+  |ユーザーC|
+  :アクティビティC;
+endif
+
+|ユーザーA|
+:アクティビティD;
+
+|ユーザーA|
+:アクティビティE;
+
+stop
+
+@enduml

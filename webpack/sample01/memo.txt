@@ -1,0 +1,50 @@
+npm init -y
+npm install -D webpack webpack-cli
+npx webpack --mode=development      //webpack4からはmodeを設定することが推奨されている
+
+
+
+$ npm run build  return
+
+> myProject@1.0.0 build /Applications/MAMP/htdocs/sample/myProject
+> NODE_ENV=production webpack --mode production
+・・・以下省略・・・
+
+$ npm run dev  return
+
+> myProject@1.0.0 dev /Applications/MAMP/htdocs/sample/myProject
+> NODE_ENV=development webpack --mode development
+・・・以下省略・・
+
+
+
+////////////////////////////////////////////////////
+$ node -e "console.log(process.env)"  return  //設定されている環境変数が表示される
+//node コマンドの -e（--eval）は引数を JavaScript として評価するオプションです
+
+{
+  TERM_PROGRAM: 'Apple_Terminal',
+  SHELL: '/bin/bash',
+  TERM: 'xterm-256color',
+  TMPDIR: '/var/folders/c2/kytqb8ls7p941834kqccm05h0000gn/T/',
+  Apple_PubSub_Socket_Render: '/private/tmp/com.apple.launchd.wmtH7tp5PO/Render',
+  TERM_PROGRAM_VERSION: '421.2',
+  OLDPWD: '/Applications/MAMP/htdocs/myProject2',
+  TERM_SESSION_ID: '6CAA7C8A-2410-48D1-99DC-0757B043C615',
+  USER: 'foo',
+  SSH_AUTH_SOCK: '/private/tmp/com.apple.launchd.QueyXSMKYY/Listeners',
+  ・・・以下省略・・・
+
+}
+
+$ node -e "console.log(process.env.NODE_ENV)"  return
+undefined  //process.env.NODE_ENV は定義されていない（設定していないので）
+//////////////////////////////////////////////////
+
+
+//webpack.config.js や index.js で設定した環境変数を取得
+if (process.env.NODE_ENV === 'production') {
+  console.log('production');
+}else{
+  console.log('devlopement');
+}

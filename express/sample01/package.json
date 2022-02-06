@@ -1,0 +1,22 @@
+{
+  "name": "express_sample01",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "start": "node dist/server/server.js",
+    "build-tsc": "tsc",
+    "bstart": "tsc; node dist/server/server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "fs": "^0.0.1-security",
+    "multer": "^1.4.4",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "eslint": "^8.3.0",
+    "typescript": "^4.5.2",
+    "webpack": "^5.64.4"
+  }
+}

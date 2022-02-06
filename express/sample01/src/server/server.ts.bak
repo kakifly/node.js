@@ -1,0 +1,127 @@
+import express from 'express';
+import session from 'express-session';
+import path from 'path';
+import * as getUser from './db/getUser';
+import * as token from './db/token';
+import {v4 as uuidv4} from 'uuid'; //UUID V
+import {Pool, PoolClient} from 'pg';
+
+const app: express.Express = express();
+
+//DB接続pool
+const pool = new Pool({
+  host: 'localhost',
+  //database: 'test',
+  user: 'test',
+  password: 'test',
+  port: 5432,
+  idleTimeoutMillis: 30000,
+  connectionTimeoutMillis: 2000,
+  max: 3,
+});
+
+//CORSの許可
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-origin', '*');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept',
+  );
+  next();
+});
+
+//app.use('/', express.static('dist'));
+
+let clientPath = __dirname.replace('/server', '');
+app.use('/', express.static(clientPath));
+
+//app.get('/*', function(req, res) {
+//  res.sendFile(path.join(clientPath, 'index.html'));
+//  //  res.sendFile('dist/index.html');
+//});
+
+//body-parserに基づいた着信リクエストの解析
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+
+//GetとPostのルーティング
+const router: express.Router = express.Router();
+router.get('/api/getTest', (req: express.Request, res: express.Response) => {
+  res.send(req.query);
+});
+
+router.post('/api/postTest', (req: express.Request, res: express.Response) => {
+  res.send(req.body);
+});
+
+router.get(
+  '/api/getuser/:userid',
+//  async (req: express.Request, res: express.Response) => {
+//    const user: getUser.User = await getUser.getUser();
+//    res.send(user);
+//  },
+  async (req: express.Request, res: express.Response) => {
+    //DB接続
+    const client = await pool.connect();
+
+    if (client == undefined) {
+      //DB接続エラー
+    }
+
+    try {
+      await client.query('BEGIN');
+
+      //ユーザ情報取得
+      const user: getUser.User = await getUser
+        .getUser(client, Number(req.params.userid))
+        .catch(function(err) {
+          console.log(err);
+          let u: getUser.User = {
+            id: 0,
+            name: '',
+            logined: false,
+          };
+          return u;
+        });
+
+      //トークン設定
+      const num: number = await token
+        .setToken(client, uuidv4(), 1)
+        .catch(function(err) {
+          console.log(err);
+          return 0;
+        });
+
+      res.cookie('token', 'value1', {
+        maxAge: 60000,
+        httpOnly: false,
+      });
+
+      res.send(
+        new (class {
+          ret: boolean = true;
+          user: getUser.User = user;
+        })(),
+      );
+
+      await client.query('COMMIT');
+    } catch (e) {
+      await client.query('ROLLBACK');
+      throw e;
+    } finally {
+      //
+      client.release();
+    }
+  },
+);
+
+router.get('*', function(req, res) {
+  res.sendFile(path.join(clientPath, 'index.html'));
+});
+
+app.use(router);
+
+//3000番ポートでAPIサーバ起動
+app.listen(3000, () => {
+  console.log('Example app listening on port 3000!');
+});

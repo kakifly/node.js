@@ -1,13 +1,14 @@
 {
   "folders": [
     {
-    "path": "."
+      "path": ".",
+      "name": "express"
     }
   ],
   "settings": {
     "workbench.colorCustomizations": {
-      "activityBarBadge.background": "#2561bb",
-      "activityBar.background": "#f8c7c7",
+      "activityBarBadge.background": "#4400FF",
+      "activityBar.background": "#4499FF",
       "activityBar.foreground": "#000000"
     }
   }
