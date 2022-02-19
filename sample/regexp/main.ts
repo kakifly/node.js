@@ -25,3 +25,12 @@ let reg = new RegExp(test);
 if(hoge.match(reg)){
   console.log('match!');
 };
+
+
+
+interface IDomain {
+  lentgth    : number;
+  allowchars : string;
+
+
+};
