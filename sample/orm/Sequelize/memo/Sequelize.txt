@@ -1,0 +1,18 @@
+ const sequelize = new Sequelize(
+   'myapp_db', // データベース名
+   'myapp_user', // ユーザ名
+   'myappass', // パスワード
+   {
+     dialect: config.dialect, // データベースの種類（MySLQLとか）
+     host: 'localhost', // ホスト名
+     port: 3306, // ポート番号
+     pool: {
+       max: 5, // プールするコネクションの最大値
+       idle: 30000, // コネクションがリリースされた後にアイドル状態になるまでの最大時間（ミリ秒、evictと合わせて使う）
+       acquire: 60000, // poolがエラーをthrowする前に接続しようとする最大時間（ミリ秒）
+       evict: 10000,  // 無効になった接続を呼び出すための時間間隔（ミリ秒）
+     },
+     logging: logger.debug.bind(logger), // 自分で用意したロガー（デフォルトはconsol.logに吐かれる）
+     timezone: 'Asia/Tokyo',
+   },
+ );

@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+     "target": "ESNext"
+    ,"lib": ["DOM", "DOM.Iterable", "ESNext"]
+    ,"module": "commonjs"
+    ,"moduleResolution": "node"
+    ,"emitDecoratorMetadata": true
+    ,"experimentalDecorators": true
+    ,"sourceMap": true
+    ,"outDir": "./build"
+  },
+  "include": [
+    "src/**/*.ts",
+  ],
+}
