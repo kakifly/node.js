@@ -3,7 +3,8 @@ import * as fs from 'fs';
 import {performance } from 'performance';
 //import { Sequelize } from 'sequelize';
 import { staff } from './models/init-models';
-import { entity, staffAttributes } from './models/staff';
+//import { entity, staffAttributes } from './models/staff';
+import { staffAttributes } from './models/staff';
 import DbCtx from './db';
 import { text } from 'stream/consumers';
 
@@ -54,58 +55,64 @@ const main = async () => {
   //  console.log('Execution time (hr): %ds %dms', hrend[0], hrend[1] / 1000000);
   //}
 
-  try{
-    await dbCtx.db.transaction(async function(tx){
+  await dbCtx.db.transaction(async function(tx){
+      //const t = await dbCtx.db.transaction();
+      try{
+        //const ent : entity<staffAttributes> = new entity<staffAttributes>();
+        //const ent : staffAttributes = new staffAttributes();
+        //ent.attributes = {
+        //ent = {
+        const ent : staffAttributes = {
+          userid    : 15,
+          usercd    : 15 ,
+          username  : 'user15',
+          userkana  : 'ﾕｰｻﾞｶﾅ15',
+          version   : 0,
+        }
+        //ent.attributes.userid = 8;
+        //ent.attributes.usercd = 8;
+        //ent.attributes.username = 'username8';
+        //ent.attributes.userkana = 'userkana8';
 
-      const ent : entity<staffAttributes> = new entity<staffAttributes>();
-      ent.attributes = {
-        userid    : 8,
-        usercd    : 8 ,
-        username  : 'user8',
-        userkana  : 'ﾕｰｻﾞｶﾅ88',
-        version   : 1,
+        ////const staffExt : staffAttributesExt = new staffAttributesExt();
+        ////staffExt.userid = 8;
+        ////staffExt.usercd = 8;
+        ////staffExt.username = 'user';
+
+
+        ////{
+        ////  userid    : 8,
+        ////  usercd    : 8 ,
+        ////  username  : 'user8',
+        ////  userkana  : 'ﾕｰｻﾞｶﾅ8',
+        ////};
+
+        //const newUser = await staff.create(ent.attributes, {transaction: tx});
+        const newUser = await staff.create(ent, {transaction: tx});
+        //console.log(ent.attributes);
+        //const newUser = await staff.create(ent.attributes);
+        //let [affectedCount] = await staff.update(ent.attributes, { where: { userid: 8 }, transaction: tx });
+        //const st : staff = new staff();
+        //st.userid = 8;
+        //st.usercd = 8;
+        //st.username = 'a';
+        //st.userkana = 'b';
+        //st.version = 1;
+
+        //console.log(st);
+
+        //await st.save({transaction: tx});
+        //ent.attributes.save({transaction: tx});
+
+        //if(affectedCount > 0){
+        //tx.rollback();
+        //}
+        //await tx.commit();
+      } catch(e){
+        await tx.rollback();
+        console.log(e);
       }
-      //ent.attributes.userid = 8;
-      //ent.attributes.usercd = 8;
-      //ent.attributes.username = 'username8';
-      //ent.attributes.userkana = 'userkana8';
-
-      ////const staffExt : staffAttributesExt = new staffAttributesExt();
-      ////staffExt.userid = 8;
-      ////staffExt.usercd = 8;
-      ////staffExt.username = 'user';
-
-
-      ////{
-      ////  userid    : 8,
-      ////  usercd    : 8 ,
-      ////  username  : 'user8',
-      ////  userkana  : 'ﾕｰｻﾞｶﾅ8',
-      ////};
-
-      ////const newUser = await staff.create(ent.attributes, {transaction: tx});
-      //console.log(ent.attributes);
-      //const newUser = await staff.create(ent.attributes);
-      //let [affectedCount] = await staff.update(ent.attributes, { where: { userid: 8 }, transaction: tx });
-      const st : staff = new staff();
-      st.userid = 8;
-      st.usercd = 8;
-      st.username = 'a';
-      st.userkana = 'b';
-      st.version = 1;
-
-      console.log(st);
-
-      await st.save({transaction: tx});
-      //ent.attributes.save({transaction: tx});
-
-      //if(affectedCount > 0){
-        //tx.commit();
-      //}
-    });
-  } catch(e){
-    console.log(e);
-  }
+  });
 
   //  await transaction.commit();
   //

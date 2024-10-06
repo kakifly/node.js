@@ -1,23 +1,12 @@
 import * as Sequelize from 'sequelize';
 import { DataTypes, Model, Optional } from 'sequelize';
 
-
-
-//export interface staffAttributes extends entityState {
-export interface staffAttributes extends attributes {
+export interface staffAttributes {
   userid: number;
   usercd: number;
   username?: string;
   userkana?: string;
   version?: number;
-}
-
-export interface attributes {
-}
-
-export class entity<T extends attributes> {
-  public attributes: T;
-  public status : number;
 }
 
 export type staffPk = "userid";
@@ -30,7 +19,8 @@ export class staff extends Model<staffAttributes, staffCreationAttributes> imple
   usercd!: number;
   username?: string;
   userkana?: string;
-  version?: number;
+  version!: number;
+
 
   static initModel(sequelize: Sequelize.Sequelize): typeof staff {
     return staff.init({
@@ -45,19 +35,22 @@ export class staff extends Model<staffAttributes, staffCreationAttributes> imple
       unique: "staff_usercd_key"
     },
     username: {
-      type: DataTypes.STRING(100),
+      type: DataTypes.STRING,
       allowNull: true
     },
     userkana: {
-      type: DataTypes.STRING(200),
+      type: DataTypes.STRING,
       allowNull: true
+    },
+    version: {
+      type: DataTypes.SMALLINT,
+      allowNull: false
     }
   }, {
     sequelize,
     tableName: 'staff',
     schema: 'yoshinori',
     timestamps: false,
-    version:true,
     indexes: [
       {
         name: "staff_pkey",

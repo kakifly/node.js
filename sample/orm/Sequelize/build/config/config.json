@@ -1,0 +1,32 @@
+{
+  "development": {
+    "username": "yoshinori",
+    "password": "yoshinori",
+    "database": "yoshinori",
+    "host": "192.168.1.34",
+    "dialect": "postgres",
+    "timezone": "Asia/Tokyo",
+    "pool": [{
+      "max": 5,
+      "min": 0,
+      "acquire": 30000,
+      "idle": 10000
+    }]
+  },
+  "staging": {
+    "username": "root",
+    "password": "pw",
+    "database": "DB_NAME",
+    "host": "HOST_NAME",
+    "dialect": "mysql",
+    "timezone": "Asia/Tokyo"
+  },
+  "production": {
+    "username": "root",
+    "password": "pw",
+    "database": "DB_NAME",
+    "host": "HOST_NAME",
+    "dialect": "mysql",
+    "timezone": "Asia/Tokyo"
+  }
+}
